@@ -13,5 +13,5 @@ export const ENV = {
   DB_PASSWORD: "password",
   DB_PASS: "password",
   DB_NAME: "ecommerce_db",
-  MONGODB_URI: "mongodb://127.0.0.1:27017/m18_social_media_api",
+  MONGODB_URI: "mongodb://127.0.0.1:27017/social_media_api",
 };
