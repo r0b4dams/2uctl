@@ -12,9 +12,7 @@ export function main() {
 
   cli
     .command("env")
-    .description(
-      "Generate a boilerplate .env file with a default configuration"
-    )
+    .description("Generate a boilerplate .env file")
     .action(env.default);
 
   cli.parse();

@@ -10,6 +10,6 @@ Options:
   -h, --help      display help for command
 
 Commands:
-  env             Generate a boilerplate .env file with a default configuration
+  env             Generate a boilerplate .env file
   help [command]  display help for command
 ```

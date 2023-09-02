@@ -3,10 +3,10 @@
   "author": "Robert Adams",
   "version": "0.0.1",
   "license": "ISC",
+  "type": "module",
   "bin": {
     "2uctl": "bin/index.js"
   },
-  "type": "module",
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^11.0.0"
