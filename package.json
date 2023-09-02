@@ -3,7 +3,6 @@
   "author": "Robert Adams",
   "version": "0.0.1",
   "license": "ISC",
-  "main": "bin/index.js",
   "bin": {
     "2uctl": "bin/index.js"
   },
