@@ -1,19 +1,17 @@
 import { Command } from "commander";
 import { env } from "./env.js";
-import { VERSION } from "./utils.js";
+import { semver } from "./version.js";
 
-const cli = new Command();
+const program = new Command();
 
-export function main() {
-  cli
-    .name("2uctl")
-    .description("A CLI to help automate stuff")
-    .version(VERSION);
+program
+  .name("askbcs")
+  .description("A CLI to help automate stuff")
+  .version(semver);
 
-  cli
-    .command("env")
-    .description("Generate a boilerplate .env file")
-    .action(env.default);
+program
+  .command("env")
+  .description("Generate a boilerplate .env file")
+  .action(env.default);
 
-  cli.parse();
-}
+program.parse();
