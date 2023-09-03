@@ -1,11 +1,15 @@
-# 2uctl
+# askbcs
 
-A CLI to help automate stuff
+A CLI to help automate stuff.
+
+Right now there is just one command `env` that generates a boilerplate env file.
+
+Run `npx askbcs env` to generate the `.env` file in the current directory.
 
 ## Usage
 
 ```
-2uctl [options] [command]
+askbcs [options] [command]
 
 Options:
   -V, --version   output the version number
@@ -18,10 +22,12 @@ Commands:
 
 Default config:
 
-```
+```shell
+DB_NAME="ecommerce_db"
+DB_USER="root"
+DB_PASS="password"
+
+# fallback var names
 DB_USERNAME="root"
 DB_PASSWORD="password"
-DB_PASS="password"
-DB_NAME="ecommerce_db"
-MONGODB_URI="mongodb://127.0.0.1:27017/social_media_api"
 ```
