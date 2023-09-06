@@ -1,8 +1,6 @@
 const syntax = /^(\w+)=(\w+)$/;
 
-function validate(keyval) {
-  return syntax.test(keyval);
-}
+const validate = (keyval) => syntax.test(keyval);
 
 export function collect(keyval, pairs) {
   if (validate(keyval)) {
