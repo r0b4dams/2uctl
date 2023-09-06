@@ -9,7 +9,6 @@
     "askbcs": "bin/index.js"
   },
   "scripts": {
-    "askbcs": "node cli",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/r0b4dams/askbcs#readme",
