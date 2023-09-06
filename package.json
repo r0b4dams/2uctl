@@ -1,7 +1,7 @@
 {
   "name": "askbcs",
   "author": "Robert Adams",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI to help automate stuff",
   "license": "ISC",
   "type": "module",
@@ -9,6 +9,7 @@
     "askbcs": "bin/index.js"
   },
   "scripts": {
+    "askbcs": "node cli",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/r0b4dams/askbcs#readme",

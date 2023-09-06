@@ -1,28 +1,38 @@
 import { open, appendFile } from "fs/promises";
-import { logger } from "./logger.js";
 
-export const FILE = ".env";
-
+// defaults
 const ENV = {
-  DB_NAME: "ecommerce_db",
+  // sequelize
+  DB_NAME: "ecommerce_db", // m13
   DB_USER: "root",
   DB_PASS: "password",
-  // fallback var names
+  // fallbacks
   DB_USERNAME: "root",
   DB_PASSWORD: "password",
 };
 
-export const env = {
-  async default() {
-    try {
-      const fileHandle = await open(FILE, "w");
-      for (const [key, val] of Object.entries(ENV)) {
-        await appendFile(FILE, `${key}="${val}"\n`);
+export async function generateEnv(vars, _options) {
+  if (vars.length > 0) {
+    vars.forEach((keyval) => {
+      const [key, val] = keyval.split("=");
+      ENV[key] = val;
+
+      // update fallbacks
+      if (key === "DB_USER" || key === "DB_USERNAME") {
+        key === "DB_USER" ? (ENV.DB_USERNAME = val) : (ENV.DB_USER = val);
       }
-      await fileHandle.close();
-      logger.ok(".env generated");
-    } catch (error) {
-      logger.err(error.message);
-    }
-  },
-};
+      if (key === "DB_PASS" || key === "DB_PASSWORD") {
+        key === "DB_PASS" ? (ENV.DB_PASSWORD = val) : (ENV.DB_PASS = val);
+      }
+    });
+  }
+  write(".env");
+}
+
+async function write(path) {
+  const fileHandle = await open(path, "w");
+  for (const [key, val] of Object.entries(ENV)) {
+    await appendFile(path, `${key}="${val}"\n`);
+  }
+  await fileHandle.close();
+}

@@ -4,4 +4,4 @@ const packageJSON = JSON.parse(
   await readFile(new URL("../package.json", import.meta.url))
 );
 
-export const semver = packageJSON.version;
+export const version = packageJSON.version;
