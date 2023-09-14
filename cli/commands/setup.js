@@ -8,6 +8,7 @@ export function setup(module, _options) {
   if (!["m12", "m13", "m14"].includes(module)) {
     throw new Error("invalid module given");
   }
+
   switch (module) {
     case "m12":
       m12();
