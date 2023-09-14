@@ -1,17 +1,20 @@
 import { open, appendFile } from "fs/promises";
 
+const default_username = "root";
+const default_password = "password";
+
 // defaults
 const ENV = {
   // sequelize
   DB_NAME: "ecommerce_db", // m13
-  DB_USER: "root",
-  DB_PASS: "password",
-  // fallbacks
-  DB_USERNAME: "root",
-  DB_PASSWORD: "password",
+  DB_USER: default_username,
+  DB_USERNAME: default_username,
+  DB_PASS: default_password,
+  DB_PASSWORD: default_password,
+  DB_PW: default_password,
 };
 
-export async function generateEnv(vars, _options) {
+export function env(vars, _options) {
   if (vars.length > 0) {
     vars.forEach((keyval) => {
       const [key, val] = keyval.split("=");
@@ -32,7 +35,7 @@ export async function generateEnv(vars, _options) {
 async function write(path) {
   const fileHandle = await open(path, "w");
   for (const [key, val] of Object.entries(ENV)) {
-    await appendFile(path, `${key}="${val}"\n`);
+    await appendFile(path, `${key}="${val}"\n`, "utf8");
   }
   await fileHandle.close();
 }
