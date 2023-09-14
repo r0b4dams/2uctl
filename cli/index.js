@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { generateEnv } from "./env.js";
+import { env, setup } from "./commands/index.js";
 import { collect, logger, version } from "../utils/index.js";
 
 try {
@@ -14,8 +14,14 @@ try {
     .command("env")
     .description("Generate a .env file")
     .argument("[keyval...]", "optional list of env vars", collect, [])
-    .action(generateEnv)
+    .action(env)
     .hook("postAction", () => logger.ok(".env generated"));
+
+  program
+    .command("setup")
+    .description("setup a module challenge environment")
+    .argument("<module>")
+    .action(setup);
 
   program.parse();
 } catch (error) {
