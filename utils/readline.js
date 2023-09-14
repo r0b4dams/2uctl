@@ -10,5 +10,5 @@ export const rl = readline.createInterface({
 
 rl.ask = async (question) =>
   rl.question(
-    `${chalk.blue("[askbcs]")} ${chalk.cyan("[prompt]")} ${question}`
+    `${chalk.blue("[askbcs]")} ${chalk.cyan("[ask]")} ${question}`
   );
