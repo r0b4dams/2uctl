@@ -1,5 +1,10 @@
 export { collect } from "./collect.js";
+export { DEFAULTS } from "./defaults.js";
+export { execute } from "./execute.js";
 export { findPath } from "./findPath.js";
+export { getCredentials } from "./getCredentials.js";
+export { getDbName } from "./getDbName.js";
 export { listFiles } from "./listFiles.js";
 export { logger } from "./logger.js";
+export { sourceFile } from "./sourceFile.js";
 export { version } from "./version.js";
