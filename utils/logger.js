@@ -1,18 +1,24 @@
 import chalk from "chalk";
 
-const prefix = () => chalk.blue("[askbcs]");
+const prefix = () => chalk.blue("[bcs]");
 
 export const logger = {
-  ok(...args) {
-    console.log(prefix(), chalk.green("[ok]"), ...args);
+  debug(...args) {
+    console.log(prefix(), chalk.cyan("[debug]"), ...args);
   },
   info(...args) {
-    console.log(prefix(), chalk.magenta("[info]"), ...args);
+    console.log(prefix(), chalk.green("[info]"), ...args);
+  },
+  error(...args) {
+    console.log(prefix(), chalk.red("[error]"), ...args);
   },
   warn(...args) {
-    console.log(prefix(), chalk.yellow("[warning]"), ...args);
+    console.log(prefix(), chalk.yellow("[warn]"), ...args);
   },
-  err(...args) {
-    console.log(prefix(), chalk.red("[error]"), ...args);
+  trace(...args) {
+    console.log(prefix(), chalk.gray("[trace]"), ...args);
+  },
+  init(...args) {
+    console.log(prefix(), chalk.cyan("[init]"), ...args);
   },
 };
