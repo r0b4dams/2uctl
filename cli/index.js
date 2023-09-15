@@ -1,5 +1,5 @@
-import { Command } from "commander";
-import { env, setup } from "./commands/index.js";
+import { Command, Option } from "commander";
+import { env } from "./commands/index.js";
 import { collect, logger, version } from "../utils/index.js";
 
 try {
@@ -12,18 +12,19 @@ try {
 
   program
     .command("env")
+    .action(env)
     .description("Generate a .env file")
     .argument("[keyval...]", "optional list of env vars", collect, [])
-    .action(env)
-    .hook("postAction", () => logger.ok(".env generated"));
-
-  program
-    .command("setup")
-    .description("setup a module challenge environment")
-    .argument("[module]")
-    .action(setup);
+    .option("-u, --user <user>", "specify username")
+    .option("-p, --password [password]", "specify password")
+    .addOption(
+      new Option(
+        "-m, --module <module>",
+        "setup dev env for modules 12, 13, 14"
+      ).choices(["12", "13", "14"])
+    );
 
   program.parse();
 } catch (error) {
-  logger.err(error.message);
+  logger.error(error.message);
 }
