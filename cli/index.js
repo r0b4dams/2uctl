@@ -20,7 +20,7 @@ try {
   program
     .command("setup")
     .description("setup a module challenge environment")
-    .argument("<module>")
+    .argument("[module]")
     .action(setup);
 
   program.parse();
