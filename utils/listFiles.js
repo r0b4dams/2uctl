@@ -3,6 +3,10 @@ import { lstat, readdir } from "fs/promises";
 
 const IGNORE = ["node_modules", ".git"];
 
+/**
+ * async generator that collects all absolute filepaths in the given dir
+ * @param {string} path the root directory of the search
+ */
 async function* ls(path = process.cwd()) {
   const files = await readdir(path);
 
@@ -22,8 +26,12 @@ async function* ls(path = process.cwd()) {
   }
 }
 
-export async function listFiles(dir) {
-  for await (const path of ls(dir)) {
-    console.log(path);
+/**
+ * prints absolute paths for all files in the given dir
+ * @param {string} path the root directory of the search
+ */
+export async function listFiles(path) {
+  for await (const filename of ls(path)) {
+    console.log(filename);
   }
 }
