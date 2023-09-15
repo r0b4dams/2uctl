@@ -1,40 +1,43 @@
 import { open, appendFile } from "fs/promises";
+import { DEFAULTS, findPath, getDbName } from "../../utils/index.js";
 
-const default_username = "root";
-const default_password = "password";
+const UN_FALLBACK = ["DB_USER", "DB_USERNAME", "DB_UN"];
+const PW_FALLBACK = ["DB_PASS", "DB_PASSWORD", "DB_PW"];
+const ENV = { ...DEFAULTS };
 
-// defaults
-const ENV = {
-  // sequelize
-  DB_NAME: "ecommerce_db", // m13
-  DB_USER: default_username,
-  DB_USERNAME: default_username,
-  DB_PASS: default_password,
-  DB_PASSWORD: default_password,
-  DB_PW: default_password,
-};
-
-export function env(vars, _options) {
-  if (vars.length > 0) {
-    vars.forEach((keyval) => {
-      const [key, val] = keyval.split("=");
-      ENV[key] = val;
-
-      // update fallbacks
-      if (key === "DB_USER" || key === "DB_USERNAME") {
-        key === "DB_USER" ? (ENV.DB_USERNAME = val) : (ENV.DB_USER = val);
-      }
-      if (key === "DB_PASS" || key === "DB_PASSWORD") {
-        key === "DB_PASS" ? (ENV.DB_PASSWORD = val) : (ENV.DB_PASS = val);
-      }
-    });
+/**
+ * generates a .env file in the directory where the command was invoked
+ * @param {string[]} vars a list of key/value pairs of the form KEY=VALUE
+ */
+export async function env(vars) {
+  if (!vars.DB_NAME) {
+    const schemaPath = await findPath(process.cwd(), "schema.sql");
+    ENV.DB_NAME = await getDbName(schemaPath);
   }
+
+  vars.forEach((keyval) => {
+    const [key, val] = keyval.split("=");
+
+    if (UN_FALLBACK.includes(key)) {
+      UN_FALLBACK.forEach((fbKey) => (ENV[fbKey] = val));
+    } else if (PW_FALLBACK.includes(key)) {
+      PW_FALLBACK.forEach((fbKey) => (ENV[fbKey] = val));
+    } else {
+      ENV[key] = val;
+    }
+  });
+
   write(".env");
 }
 
+/**
+ * write the ENV object to given path
+ * @param {string} path
+ */
 async function write(path) {
   const fileHandle = await open(path, "w");
   for (const [key, val] of Object.entries(ENV)) {
+    // append entry-by-entry to preserve KEY=VALUE syntax
     await appendFile(path, `${key}="${val}"\n`, "utf8");
   }
   await fileHandle.close();
