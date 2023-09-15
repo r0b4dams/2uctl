@@ -11,6 +11,7 @@ import {
 
 const UN_FALLBACK = ["DB_USER", "DB_USERNAME", "DB_UN"];
 const PW_FALLBACK = ["DB_PASS", "DB_PASSWORD", "DB_PW"];
+
 const ENV = { ...DEFAULTS };
 
 /**
@@ -67,12 +68,12 @@ export async function env(args, opts) {
 
     switch (opts.module) {
       case "12":
-        await sqlSeed(un, pw);
         await install();
+        await sqlSeed(un, pw);
         break;
       case "13":
-        await npmSeed();
         await install();
+        await npmSeed();
         break;
       case "14":
         await install();
