@@ -4,8 +4,7 @@ import { resolve } from "path";
 const IGNORE = ["node_modules", ".git"];
 
 /**
- * returns an async generator to search
- * given directory for a given file or dir nam
+ * async generator to search the given directory for a file or dir nam
  */
 async function* search(path = process.cwd(), target) {
   const files = await readdir(path);
@@ -27,7 +26,7 @@ async function* search(path = process.cwd(), target) {
 }
 
 /**
- * Returns an absolute filepath given a start directory and a target file or dir name
+ * returns an absolute filepath given a start directory and a target file or dir name
  *
  * @param {string} startDir directory in which to start the search
  * @param {string} target name of the directory or file to search for
