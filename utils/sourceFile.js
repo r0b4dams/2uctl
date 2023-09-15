@@ -14,9 +14,10 @@ export async function sourceFile(un, pw, src) {
     const mysql = exec(`mysql -u${un} -p${pw} -e "SOURCE ${src}"`, (error) => {
       if (error) {
         reject(error);
+      } else {
+        logger.info(`Sourced ${src}`);
+        resolve();
       }
-      logger.info(`Sourced ${src}`);
-      resolve();
     });
 
     mysql.stderr.on("data", (output) => {
