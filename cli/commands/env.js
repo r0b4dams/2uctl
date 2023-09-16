@@ -50,8 +50,8 @@ export async function env(args, opts) {
       default:
         throw new Error("module not recognized");
     }
-    logger.info(`Schema file found @ ${schemaPath}`);
 
+    logger.info(`Schema file found @ ${schemaPath}`);
     const db = await getDbName(schemaPath);
     logger.info("Database name:", db);
 
@@ -67,27 +67,25 @@ export async function env(args, opts) {
     }
 
     await sourceFile(un, pw, schemaPath);
+    
+    await install();
 
     switch (opts.module) {
       case "12":
-        await install();
         await sqlSeed(un, pw);
         break;
       case "13":
-        await install();
         await npmSeed();
-        break;
-      case "14":
-        await install();
         break;
     }
   } else if (opts?.module) {
     logger.warn("Schema file not found");
+    logger.warn("Unable to create database");
   }
 
   logger.info("Generating .env file...");
   write(".env");
-  logger.info(".env generated!");
+  logger.info(".env generated");
 }
 
 /**
@@ -103,18 +101,21 @@ async function write(path) {
   await fileHandle.close();
 }
 
+// install deps via npm script
 async function install() {
   logger.info("Installing dependencies...");
   await execute("npm install");
   logger.info("Dependencies installed!");
 }
 
+// seed db via npm script (m13)
 async function npmSeed() {
   logger.info("Seeding database...");
   await execute("npm run seed");
   logger.info("Database seeded!");
 }
 
+// seed db via seed sql file (m12)
 async function sqlSeed(un, pw) {
   const seedPath =
     (await findPath(process.cwd(), "seed.sql")) ||
