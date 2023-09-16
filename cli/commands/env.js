@@ -60,7 +60,7 @@ export async function env(args, opts) {
       un = opts.user;
 
       // passing just the -p flag saves a boolean true value, but that shouldnt be saved to .env
-      // set to empty string and switch control to mysql to prompt for a password
+      // set to empty string and switch control to mysql shell to prompt for a password
       pw = typeof opts.password === "boolean" ? "" : opts.password;
     } else {
       [un, pw] = await getCredentials();
