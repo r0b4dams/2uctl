@@ -1,3 +1,5 @@
+# ref: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages#publishing-packages-to-the-npm-registry
+
 name: Publish
 
 on:
@@ -15,10 +17,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: latest
-          registry-url: "https://registry.npmjs.org"
+          registry-url: "https://registry.npmjs.org" # need this to properly config credentials
           cache: "yarn"
 
-      # When the setup-node action creates an .npmrc file, it references the token from the NODE_AUTH_TOKEN environment variable.
       - name: Publish
         run: npm publish --access public
         env:
