@@ -75,14 +75,6 @@ DB_PW="secretpassword"
 
 #### `-m, --module <module>`
 
-``
-
-Options:
--u, --user <user> specify mysql username
--p, --password [password] specify mysql password
--m, --module <module> specify module env setup (choices: "12", "13", "14")
--h, --help display help for command
-
 #### default_config:
 
 ```bash
