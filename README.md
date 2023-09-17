@@ -30,7 +30,7 @@ Invoking the command with no options or arguments generates a `.env` file with t
 askbcs env [options] [keyval...]
 
 Arguments:
-  [keyval]                   # optional list of env vars with syntax KEY=VALUE (default: [])
+  [keyval]                   # optional list of env vars with syntax KEY=VALUE
 
 Options:
   -u, --user <user>          # specify mysql username
@@ -71,14 +71,37 @@ DB_PW="secretpassword"
 
 #### `-u, --user <user>`
 
+If initializing with the '-m' or '-sql' flags, uses the passed value to login to the mysql shell
+
+Sets the DB_USER var and all its fallbacks.
+
 #### `-p, --password [password]`
 
+If initializing with the '-m' or '-sql' flags, uses the passed value to login to the mysql shell
+
+Sets the DB_PASSWORD var and all its fallbacks.
+
 #### `-m, --module <module>`
+
+Allowed values: 12, 13, 14
+
+Create and seed (if applicable) a MySQL database and install dependencies for the challenge dev environment of the given module.
+
+#### `-s, --sql`
+
+If passed, creates a MySQL database.
+
+By default, performs a recursive search on the current directory for a `schema.sql` file and scans it for a database name. If found, a DB_NAME key will be added to the generated .env file. If not found, prompts user for a database name to create (\*caution: will drop the database if it exists).
+
+Passing a valid module with the `-m` flag will automatically uses `-s`
+
+#### `-d, --debug`
+
+Log additional output to stdout
 
 #### default_config:
 
 ```bash
-DB_NAME= # database name from schema.sql, else empty
 DB_USER="root"
 DB_PASS="password"
 

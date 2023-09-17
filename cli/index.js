@@ -35,8 +35,7 @@ try {
       []
     );
 
-  // program.parse();
-  throw new Error("called locally");
+  program.parse();
 } catch (error) {
   logger.error(error);
 }
