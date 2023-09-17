@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        run: echo "run release cmd"
+      - run: echo "run release cmd"
 
   # publish:
   #   needs: release
