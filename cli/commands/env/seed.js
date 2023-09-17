@@ -30,7 +30,6 @@ export async function npmSeed() {
     await execute(repodata.scripts.seed);
     logger.info("database seeded!");
   } else {
-    // throw new Error("npm seed script not found");
-    logger.error("npm seed script not found")
+    logger.error("npm seed script not found");
   }
 }
