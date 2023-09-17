@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Delete All local tags. (Optional Recommended)
 git tag -d $(git tag -l)
 # Fetch remote All tags. (Optional Recommended)
