@@ -1,11 +1,11 @@
-import { DEFAULTS } from "./defaults.js";
-import { writeEnv } from "./writeEnv.js";
-import { initMySQL } from "./initMySQL.js";
-import { initModule } from "./initModule.js";
-import { logger } from "../../utils/logger.js";
+import { DEFAULTS } from './defaults.js';
+import { writeEnv } from './writeEnv.js';
+import { initMySQL } from './initMySQL.js';
+import { initModule } from './initModule.js';
+import { logger } from '../../utils/logger.js';
 
-const UN_FALLBACK = ["DB_USER", "DB_USERNAME", "DB_UN"];
-const PW_FALLBACK = ["DB_PASS", "DB_PASSWORD", "DB_PW"];
+const UN_FALLBACK = ['DB_USER', 'DB_USERNAME', 'DB_UN'];
+const PW_FALLBACK = ['DB_PASS', 'DB_PASSWORD', 'DB_PW'];
 
 /**
  * generates a .env file in the directory where the command was invoked
@@ -24,7 +24,7 @@ export async function env(args, opts = {}) {
     }
 
     args.forEach((keyval) => {
-      const [key, val] = keyval.split("=");
+      const [key, val] = keyval.split('=');
       if (!opts.user && UN_FALLBACK.includes(key)) {
         UN_FALLBACK.forEach((fbKey) => (ENV[fbKey] = val));
       } else if (!opts.password && PW_FALLBACK.includes(key)) {
@@ -45,7 +45,7 @@ export async function env(args, opts = {}) {
       logger.debug(ENV);
     }
 
-    await writeEnv(".env", ENV);
+    await writeEnv('.env', ENV);
 
     if (opts.module) {
       await initModule(ENV, opts);
