@@ -1,11 +1,11 @@
-# askbcs
+# bcs
 
 A CLI to help automate some common setup tasks with modules in the BCS curriculum.
 
 ## Usage
 
 ```bash
-askbcs [options] [command]
+npx bcs [options] [command]
 
 Options:
   -h, --help                 display help for command
@@ -27,7 +27,7 @@ By default the app will perform a recursive search on the current directory for 
 Invoking the command with no options or arguments generates a `.env` file with the default configuration.
 
 ```bash
-askbcs env [options] [keyval...]
+bcs env [options] [keyval...]
 
 Arguments:
   [keyval]                   # optional list of env vars with syntax KEY=VALUE
@@ -48,7 +48,7 @@ Custom variables can be added by passing key/value pairs as arguments. Variables
 `Note:` Passing in DB_NAME as an argument key will use the given value and skip the search for the database name from a `schema.sql`.
 
 ```bash
-npx askbcs env HELLO=world
+npx bcs env HELLO=world
 
 # HELLO=world appended to the generated .env
 HELLO=world
@@ -57,7 +57,7 @@ HELLO=world
 Passing one of the user or password key names will also update the fallbacks:
 
 ```bash
-npx askbcs env DB_USER=bob DB_PW=secretpassword
+npx bcs env DB_USER=bob DB_PW=secretpassword
 
 DB_USER="bob"
 DB_USERNAME="bob"

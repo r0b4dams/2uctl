@@ -1,5 +1,5 @@
-export const default_username = "root";
-export const default_password = "password";
+export const default_username = 'root';
+export const default_password = 'password';
 
 export const DEFAULTS = {
   // DB_NAME: "",
