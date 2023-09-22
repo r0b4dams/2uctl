@@ -8,10 +8,7 @@ import { metadata } from './utils/metadata.js';
 try {
   const program = new Command();
 
-  program
-    .name(metadata.name)
-    .description(metadata.description)
-    .version(metadata.version);
+  program.name(metadata.name).description(metadata.description).version(metadata.version);
 
   program
     .command('env')
@@ -22,19 +19,10 @@ try {
     .option('-p, --password [password]', 'specify mysql password')
     .option('-d, --debug [debug]', 'log debugging data')
     .addOption(
-      // use constructor to pass in allowed choices
-      new Option('-m, --module <module>', 'specify module env setup').choices([
-        '12',
-        '13',
-        '14',
-      ])
+      // use constructor to declare allowed choices
+      new Option('-m, --module <module>', 'specify module env setup').choices(['12', '13', '14']),
     )
-    .argument(
-      '[keyval...]',
-      'optional list of env vars with syntax KEY=VALUE',
-      collect,
-      []
-    );
+    .argument('[keyval...]', 'optional list of env vars with syntax KEY=VALUE', collect, []);
 
   program.parse();
 } catch (error) {

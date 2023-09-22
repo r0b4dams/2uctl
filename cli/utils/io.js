@@ -1,5 +1,5 @@
-import readline from "readline/promises";
-import chalk from "chalk";
+import readline from 'readline/promises';
+import chalk from 'chalk';
 
 /**
  * caution: this module is currently experimental
@@ -12,7 +12,5 @@ export const io = readline.createInterface({
 
 // wrapper to add stdout formatting
 io.ask = async (question) => {
-  return io.question(
-    `${chalk.blue("[bcs]")} ${chalk.magenta("[ask]")} ${question}`
-  );
+  return io.question(`${chalk.blue('[bcs]')} ${chalk.magenta('[ask]')} ${question}`);
 };
