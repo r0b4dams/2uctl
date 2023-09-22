@@ -1,5 +1,5 @@
 {
-  "name": "askbcs",
+  "name": "bcs-cli",
   "author": "Robert Adams",
   "version": "1.1.4",
   "description": "A CLI to help automate some common setup tasks with modules in the BCS curriculum.",
@@ -11,13 +11,13 @@
   "scripts": {
     "release": "bash scripts/release.sh"
   },
-  "homepage": "https://github.com/r0b4dams/askbcs#readme",
+  "homepage": "https://github.com/r0b4dams/bcs-cli#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/r0b4dams/askbcs.git"
+    "url": "git+ssh://git@github.com/r0b4dams/bcs-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/r0b4dams/askbcs/issues"
+    "url": "https://github.com/r0b4dams/bcs-cli/issues"
   },
   "dependencies": {
     "chalk": "^5.3.0",
