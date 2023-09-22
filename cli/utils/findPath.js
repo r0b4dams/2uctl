@@ -1,10 +1,10 @@
-import { lstat, readdir } from "fs/promises";
-import { resolve } from "path";
+import { lstat, readdir } from 'fs/promises';
+import { resolve } from 'path';
 
-const IGNORE = ["node_modules", ".git"];
+const IGNORE = ['node_modules', '.git'];
 
 /**
- * async generator to search the given directory for a file or dir nam
+ * async generator to search the given directory for a file or dir name
  */
 async function* search(path = process.cwd(), target) {
   const files = await readdir(path);

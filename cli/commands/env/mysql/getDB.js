@@ -1,4 +1,4 @@
-import { exec } from "child_process";
+import { exec } from 'child_process';
 
 /**
  * searches the given file to find SQL database name
@@ -12,13 +12,10 @@ export async function getDB(path) {
         reject(error);
       }
 
-      const result = stdout
-        .replace("CREATE DATABASE", "")
-        .replace(";", "")
-        .trim();
+      const result = stdout.replace('CREATE DATABASE', '').replace(';', '').trim();
 
       if (!result) {
-        reject(new Error("database name not found"));
+        reject(new Error('database name not found'));
       }
       resolve(result);
     });

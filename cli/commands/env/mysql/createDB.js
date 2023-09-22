@@ -1,5 +1,5 @@
-import { exec } from "child_process";
-import { logger } from "../../../utils/logger.js";
+import { exec } from 'child_process';
+import { logger } from '../../../utils/logger.js';
 
 /**
  * Invokes the mysql shell with the given credentials to create a database with the given name.
@@ -21,7 +21,7 @@ export function createDB(un, pw, db) {
           logger.info(`created database: ${db}`);
           resolve();
         }
-      }
+      },
     );
   });
 }

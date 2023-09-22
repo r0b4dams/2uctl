@@ -1,5 +1,5 @@
-import { exec } from "child_process";
-import { logger } from "../../../utils/logger.js";
+import { exec } from 'child_process';
+import { logger } from '../../../utils/logger.js';
 
 /**
  * invokes the mysql shell with the given credentials
@@ -20,8 +20,8 @@ export async function sourceFile(un, pw, src) {
       }
     });
 
-    mysql.stderr.on("data", (output) => {
-      if (output.includes("ERROR")) {
+    mysql.stderr.on('data', (output) => {
+      if (output.includes('ERROR')) {
         logger.warn(`could not source file: ${src}`);
         logger.error(output.trim());
       }
