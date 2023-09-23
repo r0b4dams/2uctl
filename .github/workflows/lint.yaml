@@ -12,9 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Validate PR title
-        run: bash scripts/validate_title.sh '${{ github.event.pull_request.title }}'
-
       - name: Setup
         uses: actions/setup-node@v3
         with:
