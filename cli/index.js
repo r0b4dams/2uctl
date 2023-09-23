@@ -14,6 +14,7 @@ try {
     .command('env')
     .description('generate a .env file in the current directory.')
     .action(env)
+    .argument('[keyval...]', 'optional list of env vars with syntax KEY=VALUE', collect, [])
     .option('-s, --sql [sql]', 'create an sql database')
     .option('-u, --user <user>', 'specify mysql username')
     .option('-p, --password [password]', 'specify mysql password')
@@ -21,8 +22,7 @@ try {
     .addOption(
       // use constructor to declare allowed choices
       new Option('-m, --module <module>', 'specify module env setup').choices(['12', '13', '14']),
-    )
-    .argument('[keyval...]', 'optional list of env vars with syntax KEY=VALUE', collect, []);
+    );
 
   program.parse();
 } catch (error) {
