@@ -5,6 +5,8 @@ const IGNORE = ['node_modules', '.git'];
 
 /**
  * async generator to search the given directory for a file or dir name
+ * @param {string} path directory to search
+ * @param {string} target filename to search for e.g. 'schema.sql'
  */
 async function* search(path = process.cwd(), target) {
   const files = await readdir(path);
@@ -27,6 +29,7 @@ async function* search(path = process.cwd(), target) {
 
 /**
  * returns an absolute filepath given a start directory and a target file or dir name
+ *
  * returns the first found match, but the generator collects all paths that match target
  *
  * @param {string} startDir directory in which to start the search
