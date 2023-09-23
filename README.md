@@ -1,6 +1,6 @@
 # askbcs
 
-A command line interface to help automate some common setup tasks with modules in the askbcs curriculum.
+A command line interface to help automate some common setup tasks.
 
 ## Usage
 
