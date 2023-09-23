@@ -15,7 +15,6 @@ export function createDB(un, pw, db) {
       `mysql -u${un} -p${pw} -e "DROP DATABASE IF EXISTS ${db}; CREATE DATABASE ${db}"`,
       (error) => {
         if (error) {
-          console.log(error);
           reject(error);
         } else {
           logger.info(`created database: ${db}`);
