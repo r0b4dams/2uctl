@@ -10,7 +10,11 @@ export const io = readline.createInterface({
   output: process.stdout,
 });
 
-// wrapper to add stdout formatting
+/**
+ * helper to add formatting to stdout
+ * @param {string} question
+ * @returns {Promise<string>} user input
+ */
 io.ask = async (question) => {
   return io.question(`${chalk.blue('[bcs]')} ${chalk.magenta('[ask]')} ${question}`);
 };
