@@ -9,7 +9,7 @@ TAG=v$VERSION
 git tag -a $TAG -m "release version $VERSION"
 
 if [ $? -eq 0 ]; then
-  git push origin $TAG --follow-tags
+  git push --follow-tags
 else
   echo error: failed to tag build
 fi

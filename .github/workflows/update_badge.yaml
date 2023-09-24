@@ -1,11 +1,10 @@
-name: Update npm badge
+name: Update readme npm badge
 
 on:
   workflow_run:
     workflows: [Publish]
     types:
       - completed
-
 
 jobs:
   update-badge:
