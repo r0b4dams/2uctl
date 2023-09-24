@@ -1,3 +1,5 @@
+[![npm_badge](https://img.shields.io/badge/npm-v1.1.7-blue.svg?logo=npm)](https://www.npmjs.com/package/askbcs)
+
 # askbcs
 
 A command line interface to help automate some common setup tasks with modules in the askbcs curriculum.
@@ -8,12 +10,12 @@ A command line interface to help automate some common setup tasks with modules i
 npx askbcs [options] [command]
 
 Options:
-  -h, --help                 display help for command
-  -V, --version              output the version number
+-h, --help display help for command
+-V, --version output the version number
 
 Commands:
-  help [command]             display help for command
-  env [options] [keyval...]  Generate a .env file in the current directory
+help [command] display help for command
+env [options] [keyval...] Generate a .env file in the current directory
 ```
 
 ## Commands
@@ -30,13 +32,13 @@ Invoking the command with no options or arguments generates a `.env` file with t
 askbcs env [options] [keyval...]
 
 Arguments:
-  [keyval]                   # optional list of env vars with syntax KEY=VALUE
+[keyval] # optional list of env vars with syntax KEY=VALUE
 
 Options:
-  -u, --user <user>          # specify mysql username
-  -p, --password [password]  # specify mysql password
-  -m, --module <module>      # specify module env setup (choices: "12", "13", "14")
-  -h, --help                 # display help for command
+-u, --user <user> # specify mysql username
+-p, --password [password] # specify mysql password
+-m, --module <module> # specify module env setup (choices: "12", "13", "14")
+-h, --help # display help for command
 ```
 
 #### Arguments
