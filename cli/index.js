@@ -12,8 +12,8 @@ try {
 
   program
     .command('env')
-    .description('generate a .env file in the current directory.')
     .action(env)
+    .description('generate a .env file in the current directory.')
     .argument('[keyval...]', 'optional list of env vars with syntax KEY=VALUE', collect, [])
     .option('-s, --sql [sql]', 'create an sql database')
     .option('-u, --user <user>', 'specify mysql username')

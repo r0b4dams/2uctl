@@ -1,4 +1,4 @@
-import { lstat, readdir } from 'fs/promises';
+import { readdir, stat } from 'fs/promises';
 import { resolve } from 'path';
 
 const IGNORE = ['node_modules', '.git'];
@@ -17,7 +17,7 @@ async function* search(path = process.cwd(), target) {
     }
 
     const filepath = resolve(path, filename);
-    const filestat = await lstat(filepath);
+    const filestat = await stat(filepath);
 
     if (filestat.isDirectory()) {
       yield* search(filepath, target); // defer to another generator

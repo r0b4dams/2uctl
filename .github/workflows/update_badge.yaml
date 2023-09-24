@@ -1,33 +1,32 @@
-name: Bump
+name: Update npm badge
 
 on:
-  push:
-    branches:
-      - 'main'
+  release:
+    types: [published]
 
 jobs:
-  bump:
+  badge:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Bump
-        run: bash scripts/bump_version.sh '${{ github.event.head_commit.message }}'
+      - name: Update badge
+        run: bash scripts/update_badge.sh
 
       - name: Get version
         id: get-version
         run: |
-          VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          VERSION=$(node -p "require('./package.json').version")
 
       - name: Commit
         env:
           CI_COMMIT_AUTHOR: bump_bot
           VERSION: ${{ steps.get-version.outputs.version }}
         run: |
-          git add package.json
+          git add README.md
           git config --global user.name '${{ env.CI_COMMIT_AUTHOR }}'
           git config --global user.email '${{ env.CI_COMMIT_AUTHOR }}@users.noreply.github.com'
-          git commit -m "bump version to ${{ env.VERSION }} [skip actions]"
+          git commit -m "update badge to ${{ env.VERSION }} [skip actions]"
           git push origin main

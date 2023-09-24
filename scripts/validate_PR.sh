@@ -5,11 +5,11 @@ shopt -s extglob
 echo pr title: ${1}
 
 case $1 in
- !([Hh]otfix/?*|[Bb]ugfix/?*|[Ff]eature/?*) )
-    echo error: invalid pr title
-    exit 1
-    ;;
-  * )
-    echo title ok
-    ;;
+!([Hh]otfix/?*|[Bb]ugfix/?*|[Ff]eature/?*))
+  echo error: invalid pr title
+  exit 1
+  ;;
+*)
+  echo title ok
+  ;;
 esac

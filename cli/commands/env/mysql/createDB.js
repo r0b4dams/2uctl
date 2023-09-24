@@ -7,7 +7,7 @@ import { logger } from '../../../utils/logger.js';
  * @param {string} un mysql username
  * @param {string} pw mysql password
  * @param {string} db database name to create
- * @returns
+ * @returns {Promise<void>}
  */
 export function createDB(un, pw, db) {
   return new Promise((resolve, reject) => {
