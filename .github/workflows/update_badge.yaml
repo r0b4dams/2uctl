@@ -5,20 +5,17 @@ on:
     types: [published]
 
 jobs:
-  badge:
+  update_badge:
     runs-on: ubuntu-latest
+    env:
+      CI_COMMIT_AUTHOR: bump_bot
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Update badge
-        run: bash scripts/update_badge.sh
-
-      - name: Commit
-        env:
-          CI_COMMIT_AUTHOR: bump_bot
+      - name: Update npm badge
+        uses: actions/checkout@v4
+        with:
+          ref: 'refs/heads/main'
         run: |
-          git checkout main
+          bash scripts/update_badge.sh
           git add README.md
           git config --global user.name '${{ env.CI_COMMIT_AUTHOR }}'
           git config --global user.email '${{ env.CI_COMMIT_AUTHOR }}@users.noreply.github.com'
