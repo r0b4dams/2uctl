@@ -1,4 +1,4 @@
-[![npm_badge](https://img.shields.io/badge/npm-v1.1.7-blue.svg?logo=npm)](https://www.npmjs.com/package/askbcs)
+[![npm_badge](https://img.shields.io/badge/npm-v1.2.2-blue.svg?logo=npm)](https://www.npmjs.com/package/askbcs)
 
 # askbcs
 
