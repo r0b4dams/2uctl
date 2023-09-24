@@ -11,7 +11,7 @@ PKG_URL="https://www.npmjs.com/package/$PKG_NAME"
 
 BADGE_ID="npm_badge"
 BADGE_URL="https://img.shields.io/badge/npm-v$PKG_VERSION-blue.svg?logo=npm"
-BADGE_MD="[![npm_badge]($BADGE_URL)]($PKG_URL)"
+BADGE_MD="[![$BADGE_ID]($BADGE_URL)]($PKG_URL)"
 
 while IFS= read -r line; do
     case $line in

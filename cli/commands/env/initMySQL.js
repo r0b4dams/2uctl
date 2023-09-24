@@ -17,6 +17,9 @@ export async function initMySQL(env, opts) {
   try {
     let un, pw;
 
+    // passing an option with no arg sets the option to true
+    // but strings are needed to login to the shell
+
     if (typeof opts?.user === 'string') {
       un = opts.user;
     } else {
