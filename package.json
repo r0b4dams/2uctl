@@ -1,7 +1,7 @@
 {
   "name": "askbcs",
   "author": "Robert Adams",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "A CLI to help automate some common setup tasks with modules in the BCS curriculum.",
   "license": "ISC",
   "type": "module",
