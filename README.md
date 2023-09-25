@@ -97,7 +97,7 @@ Create and seed (if applicable) a MySQL database and install dependencies for th
 
 If passed, creates a MySQL database.
 
-By default, performs a recursive search on the current directory for a `schema.sql` file and scans it for a database name. If found, a DB_NAME key will be added to the generated .env file. If not found, prompts user for a database name to create (\*caution: will drop the database if it exists).
+By default, performs a recursive search on the current directory for a `schema.sql` file and scans it for a database name. If found, a DB_NAME key will be added to the generated .env file. If not found, prompts user for a database name to create (caution: will drop the database if it exists).
 
 Passing a valid module with the `-m` flag will automatically uses `-s`
 
