@@ -1,19 +1,15 @@
-#!/usr/bin/env bash
+#! /usr/bin/env bash
 
 shopt -s extglob
 
-config() {
-  yarn config set version-git-tag false
-  yarn config set version-tag-prefix ""
-}
+yarn config set version-git-tag false
+yarn config set version-tag-prefix ""
 
 case $1 in
-[Hh]otfix/?* | [Bb]ugfix/?*)
-  config
+[Pp]atch/?* | [Hh]otfix/?* | [Bb]ugfix/?*)
   yarn version --patch
   ;;
 [Ff]eature/?*)
-  config
   yarn version --minor
   ;;
 # Major incremented manually

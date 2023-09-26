@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#! /usr/bin/env bash
 
 # Delete All local tags. (Optional Recommended)
 git tag -d $(git tag -l)
