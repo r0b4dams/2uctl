@@ -4,7 +4,8 @@ name: Publish
 
 on:
   release:
-    types: [published]
+    types: 
+      - published
 
 jobs:
   publish:
@@ -21,9 +22,6 @@ jobs:
           node-version: latest
           registry-url: 'https://registry.npmjs.org' # need this to properly config credentials
           cache: 'yarn'
-
-      - name: Update readme badge
-        run: bash scripts/update_badge.sh
 
       - name: Commit
         env:
