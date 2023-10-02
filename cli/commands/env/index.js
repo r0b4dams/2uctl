@@ -15,6 +15,18 @@ export async function env(args, opts = {}) {
   try {
     const ENV = { ...DEFAULTS };
 
+    switch (opts.module) {
+      case '12':
+        logger.init('setup module 12 challenge - Employee Tracker');
+        break;
+      case '13':
+        logger.init('setup module 13 challenge - E-Commerce Backend');
+        break;
+      case '14':
+        logger.init('setup module 14 challenge - Tech-Blog');
+        break;
+    }
+
     if (opts.user) {
       UN_FALLBACK.forEach((fbKey) => (ENV[fbKey] = opts.user));
     }
