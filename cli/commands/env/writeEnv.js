@@ -14,5 +14,5 @@ export async function writeEnv(path, data = {}) {
     await appendFile(path, `${key}="${val}"\n`, 'utf8');
   }
   await fileHandle.close();
-  logger.info('.env generated');
+  logger.info('.env file generated');
 }

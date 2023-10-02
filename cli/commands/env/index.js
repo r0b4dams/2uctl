@@ -1,8 +1,8 @@
 import { DEFAULTS } from './defaults.js';
 import { writeEnv } from './writeEnv.js';
-import { initMySQL } from './initMySQL.js';
 import { initModule } from './initModule.js';
 import { logger } from '../../utils/logger.js';
+import { mysql } from './mysql/index.js';
 
 const UN_FALLBACK = ['DB_USER', 'DB_USERNAME', 'DB_UN'];
 const PW_FALLBACK = ['DB_PASS', 'DB_PASSWORD', 'DB_PW'];
@@ -14,6 +14,18 @@ const PW_FALLBACK = ['DB_PASS', 'DB_PASSWORD', 'DB_PW'];
 export async function env(args, opts = {}) {
   try {
     const ENV = { ...DEFAULTS };
+
+    switch (opts.module) {
+      case '12':
+        logger.init('setup module 12 challenge - Employee Tracker');
+        break;
+      case '13':
+        logger.init('setup module 13 challenge - E-Commerce Backend');
+        break;
+      case '14':
+        logger.init('setup module 14 challenge - Tech-Blog');
+        break;
+    }
 
     if (opts.user) {
       UN_FALLBACK.forEach((fbKey) => (ENV[fbKey] = opts.user));
@@ -35,7 +47,7 @@ export async function env(args, opts = {}) {
     });
 
     if (opts.module || opts.sql) {
-      const db = await initMySQL(ENV, opts);
+      const db = await mysql(ENV, opts);
       if (db) {
         ENV.DB_NAME = db;
       }
@@ -45,7 +57,9 @@ export async function env(args, opts = {}) {
       logger.debug(ENV);
     }
 
-    await writeEnv('.env', ENV);
+    if (opts.module !== '12') {
+      await writeEnv('.env', ENV);
+    }
 
     if (opts.module) {
       await initModule(ENV, opts);
