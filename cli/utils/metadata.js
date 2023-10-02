@@ -1,5 +1,6 @@
 import { readFile } from 'fs/promises';
 import { findPath } from './findPath.js';
+import { logger } from './logger.js';
 
 export const metadata = await getPackageJson('this');
 export const repodata = await getPackageJson();
@@ -20,8 +21,9 @@ async function getPackageJson(type) {
       path = new URL('../../package.json', import.meta.url);
       break;
   }
-  if (path) {
-    return JSON.parse(await readFile(path));
+  if (!path) {
+    logger.warn('package.json not found');
+    return;
   }
-  throw new Error('package.json not found');
+  return JSON.parse(await readFile(path));
 }
